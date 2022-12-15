@@ -2,19 +2,29 @@ clear; clc
 
 % create online json lookup
 
-% FCMPASS kit
-Manufacturer = 'Company_Name';
-Cat = 'C100001';
-Lot = 'L202212';
+kits = readtable('/Users/welshjoa/Documents/MATLAB/Software Updates/database/beadkits.xlsx');
 
-kits.(Manufacturer).(Cat).(Lot).Diam = [81 100 150 240 303 401];
-kits.(Manufacturer).(Cat).(Lot).CV = [12 6.8 3.3 1.5 1.6 1.3];
-kits.(Manufacturer).(Cat).(Lot).BeadRI = repmat(1.59,1,6);
-kits.(Manufacturer).(Cat).(Lot).BeadRIWave = repmat(589,1,6);
-kits.(Manufacturer).(Cat).(Lot).SetName = 'FCMPASS Bead Kit';
-kits.(Manufacturer).(Cat).(Lot).Composition = repmat({'Polystyrene'},1,6);
-kits.(Manufacturer).(Cat).(Lot).SpikeInDiam = [220]; 
+for i = 1:size(kits, 1)
+    % FCMPASS kit
+    Manufacturer = kits.Manufacturer{i};
+    Cat =  kits.Cat{i};
+    Lot =  kits.Lot{i};
+    Diams =  str2num(kits.Diam{i});
+    CV =  str2num(kits.CV{i});
+    BeadRI =  str2num(kits.BeadRI{i});
+    BeadRIWave =  str2num(kits.BeadRIWave{i});
+    SetName = kits.SetName;
+    Composition = kits.Composition;
+    SpikeInDiam = kits.SpikeInDiam;
 
+    kits.(Manufacturer).(Cat).(Lot).Diam = Diams;
+    kits.(Manufacturer).(Cat).(Lot).CV = CV;
+    kits.(Manufacturer).(Cat).(Lot).BeadRI = BeadRI;
+    kits.(Manufacturer).(Cat).(Lot).BeadRIWave = BeadRIWave;
+    kits.(Manufacturer).(Cat).(Lot).SetName = SetName;
+    kits.(Manufacturer).(Cat).(Lot).Composition = Composition;
+    kits.(Manufacturer).(Cat).(Lot).SpikeInDiam = SpikeInDiam;
+end
 
 text = jsonencode(kits);
 
