@@ -17,16 +17,16 @@ for i = 1:size(kits, 1)
     Composition = kits.Composition;
     SpikeInDiam = kits.SpikeInDiam;
 
-    kits.(Manufacturer).(Cat).(Lot).Diam = Diams;
-    kits.(Manufacturer).(Cat).(Lot).CV = CV;
-    kits.(Manufacturer).(Cat).(Lot).BeadRI = BeadRI;
-    kits.(Manufacturer).(Cat).(Lot).BeadRIWave = BeadRIWave;
-    kits.(Manufacturer).(Cat).(Lot).SetName = SetName;
-    kits.(Manufacturer).(Cat).(Lot).Composition = Composition;
-    kits.(Manufacturer).(Cat).(Lot).SpikeInDiam = SpikeInDiam;
+    database.(Manufacturer).(Cat).(Lot).Diam = Diams;
+    database.(Manufacturer).(Cat).(Lot).CV = CV;
+    database.(Manufacturer).(Cat).(Lot).BeadRI = BeadRI;
+    database.(Manufacturer).(Cat).(Lot).BeadRIWave = BeadRIWave;
+    database.(Manufacturer).(Cat).(Lot).SetName = SetName;
+    database.(Manufacturer).(Cat).(Lot).Composition = Composition;
+    database.(Manufacturer).(Cat).(Lot).SpikeInDiam = SpikeInDiam;
 end
 
-text = jsonencode(kits);
+text = jsonencode(database);
 
 name = '../database/kitdatabase.json';
 if isfile(name)
