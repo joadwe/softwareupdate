@@ -6,16 +6,16 @@ kits = readtable('/Users/welshjoa/Documents/MATLAB/Software Updates/database/bea
 
 for i = 1:size(kits, 1)
     % FCMPASS kit
-    Manufacturer = kits.Manufacturer{i};
-    Cat =  kits.Cat{i};
-    Lot =  kits.Lot{i};
-    Diams =  str2num(kits.Diam{i});
-    CV =  str2num(kits.CV{i});
-    BeadRI =  str2num(kits.BeadRI{i});
-    BeadRIWave =  str2num(kits.BeadRIWave{i});
-    SetName = kits.SetName;
-    Composition = kits.Composition;
-    SpikeInDiam = kits.SpikeInDiam;
+    Manufacturer = kits{i,'Manufacturer'}{1};
+    Cat =  kits{i,'Cat'}{1};
+    Lot =  kits{i,'Lot'}{1};
+    Diams =  str2num(kits{i,'Diam'}{1});
+    CV =  str2num(kits{i,'CV'}{1});
+    BeadRI =  str2num(kits{i,'BeadRI'}{1});
+    BeadRIWave =  str2num(kits{i,'BeadRIWave'}{1});
+    SetName = kits{i,'SetName'}{1};
+    Composition = kits{i,'Composition'};
+    SpikeInDiam = kits{i,'SpikeInDiam'};
 
     database.(Manufacturer).(Cat).(Lot).Diam = Diams;
     database.(Manufacturer).(Cat).(Lot).CV = CV;
